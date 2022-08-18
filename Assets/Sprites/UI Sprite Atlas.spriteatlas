@@ -42,26 +42,29 @@ SpriteAtlas:
       enableTightPacking: 1
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 0bf0f4271f30d9d4ebfa0dd53deea928, type: 3}
     - {fileID: 2800000, guid: 072de5248d8dd4b419a0f91b99f7a2d1, type: 3}
     - {fileID: 2800000, guid: ae9580980254cd24e9a910adf0bf1037, type: 3}
     - {fileID: 2800000, guid: a984989d49a26f544a2e5a297bd0b3b5, type: 3}
-    - {fileID: 2800000, guid: 49728849b4957054e8a69fcea4067bb9, type: 3}
+    - {fileID: 2800000, guid: 37588c373671c70419e728ceff87082b, type: 3}
+    - {fileID: 2800000, guid: c7971b5704ddb5541b741242a9aaf64b, type: 3}
+    - {fileID: 2800000, guid: 5905b341f1042c74bb4f57607966ddfe, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 5905b341f1042c74bb4f57607966ddfe, type: 3}
   - {fileID: 21300000, guid: 072de5248d8dd4b419a0f91b99f7a2d1, type: 3}
-  - {fileID: 21300000, guid: 0bf0f4271f30d9d4ebfa0dd53deea928, type: 3}
+  - {fileID: 21300000, guid: 37588c373671c70419e728ceff87082b, type: 3}
+  - {fileID: 21300000, guid: c7971b5704ddb5541b741242a9aaf64b, type: 3}
   - {fileID: 21300000, guid: ae9580980254cd24e9a910adf0bf1037, type: 3}
-  - {fileID: 21300000, guid: 49728849b4957054e8a69fcea4067bb9, type: 3}
   - {fileID: 21300000, guid: a984989d49a26f544a2e5a297bd0b3b5, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Toggle
   - Circle1
-  - Button
+  - BGSliced
+  - ButtonSliced
   - Circle2
-  - SwitchBG
   - icon_arrow
   m_Tag: UI Sprite Atlas
   m_IsVariant: 0

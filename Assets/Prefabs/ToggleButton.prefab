@@ -52,8 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   greenToggle: {fileID: 7247035091020355011}
   redToggle: {fileID: 5492488025041366059}
-  _toggleDelay: 1
-  _deltaPosition: 30
 --- !u!1 &5492488025041366059
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49728849b4957054e8a69fcea4067bb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5905b341f1042c74bb4f57607966ddfe, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
