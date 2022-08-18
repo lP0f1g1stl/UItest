@@ -7,9 +7,10 @@ public class Toggle : MonoBehaviour
     [SerializeField] private ToggleAnimation _animation;
 
     private Button _button;
-    public bool IsBlocked{ get; set; }
 
-    public Action<bool> OnToggleClick;
+    public event Action<bool> OnToggleClick;
+
+    public ToggleAnimation Animation => _animation;
     private void Awake()
     {
         _button = GetComponent<Button>();
@@ -17,7 +18,6 @@ public class Toggle : MonoBehaviour
     private void OnEnable()
     {
         _button.onClick.AddListener(ChangeToggle);
-        SetDefault();
     }
     private void OnDisable()
     {
@@ -25,17 +25,12 @@ public class Toggle : MonoBehaviour
     }
     private void ChangeToggle() 
     {
-        if (!_animation.IsBusy && !IsBlocked) 
+        if (!_animation.IsBusy) 
         {
             _animation.IsActive = !_animation.IsActive;
             int sign = _animation.IsActive ? 1 : -1;
             _animation.Switch(sign);
             OnToggleClick?.Invoke(_animation.IsActive);
         }
-    }
-    public void SetDefault() 
-    {
-        IsBlocked = false;
-        _animation.IsBusy = false;
     }
 }

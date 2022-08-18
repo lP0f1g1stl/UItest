@@ -5,20 +5,17 @@ using System;
 
 public class MainButton : MonoBehaviour
 {
-    [Header("AnimationSettings")]
-    [SerializeField] private float _animationDelay = 1f;
-    [SerializeField] private float _scaleMultiplier = 1.1f;
+    private AnimationData _animationData;
 
     private Button _button;
 
-    public Action OnMainButtonClick;
-    public Action OnAnimationComplete;
-    private void Awake()
+    public event Action OnAnimationComplete;
+
+    public Button Button => _button;
+    public void Init(AnimationData animationData)
     {
         _button = GetComponent<Button>();
-    }
-    private void OnEnable()
-    {
+        _animationData = animationData;
         _button.onClick.AddListener(OnClick);
         SetDefault();
     }
@@ -28,15 +25,12 @@ public class MainButton : MonoBehaviour
     }
     private void OnClick()
     {
-        _button.enabled = false;
-        OnMainButtonClick?.Invoke();
-        transform.DOScale(_scaleMultiplier, _animationDelay)
+        transform.DOScale(_animationData.ScaleMultiplier, _animationData.AnimationDelay)
             .SetEase(Ease.OutElastic)
             .OnComplete(() => OnAnimationComplete?.Invoke());
     }
     public void SetDefault()
     {
-        _button.enabled = true;
         transform.localScale = Vector3.one;
     }
 

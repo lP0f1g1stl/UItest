@@ -5,53 +5,54 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     [Header("AnimationSettings")]
-    [SerializeField] private float _fadeDuration = 1f;
-    [Space] 
-    [SerializeField] private MainButton _mainButton;
-    [SerializeField] private Button _privacy;
-    [SerializeField] private Button _rules;
+    [SerializeField] private AnimationData _animationData;
     [Space]
+    [Header("Buttons")]
+    [SerializeField] private MainButton _mainButton;
+    [Space]
+    [SerializeField] private Button[] _buttons;
+    [Space]
+    [Header("Toggles")]
     [SerializeField] private Toggle[] _toggles;
+    [Space]
 
     private CanvasGroup _group;
+
+    public Toggle[] Toggles => _toggles;
+    public Button[] Buttons => _buttons;
 
     private void Awake()
     {
         _group = GetComponent<CanvasGroup>();
+        foreach(Toggle tg in _toggles) 
+        {
+            tg.Animation.AnimationData = _animationData;
+        }
     }
     private void OnEnable()
     {
-        _mainButton.OnMainButtonClick += OnClick;
+        _mainButton.Init(_animationData);
+        _mainButton.Button.onClick.AddListener(OnClick);
         _mainButton.OnAnimationComplete += Close;
-        _privacy.onClick.AddListener(Test);
-        _rules.onClick.AddListener(Test);
         SetDefault();
     }
     private void OnDisable()
     {
-        _mainButton.OnMainButtonClick -= OnClick;
+        _mainButton.Button.onClick.RemoveListener(OnClick);
         _mainButton.OnAnimationComplete -= Close;
-        _privacy.onClick.RemoveListener(Test);
-        _rules.onClick.RemoveListener(Test);
     }
 
     private void OnClick()
     {
-        for (int i = 0; i < _toggles.Length; i++)
-        {
-            _toggles[i].IsBlocked = true;
-        }
+        _group.interactable = false;
     }
     private void Close() 
     {
-        _group.DOFade(0, _fadeDuration).OnComplete(() => gameObject.SetActive(false));
+        _group.DOFade(0, _animationData.FadeDuration).OnComplete(() => gameObject.SetActive(false));
     }
     private void SetDefault() 
     {
         _group.alpha = 1;
-    }
-    private void Test() 
-    {
-        Debug.Log("Click");
+        _group.interactable = true;
     }
 }
